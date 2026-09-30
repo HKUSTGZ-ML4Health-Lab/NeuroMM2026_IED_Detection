@@ -22,17 +22,21 @@ def main() -> None:
     with (root / 'weights/MANIFEST.tsv').open(newline='') as handle:
         rows = list(csv.DictReader(handle, delimiter='\t'))
     for row in rows:
-        matches = sorted(args.source.glob(row['archive_glob']))
+        # The Track 3-only archive uses the readable path. The glob also accepts
+        # the older combined archive for users who already downloaded it.
+        matches = [args.source / row['path'], *sorted(args.source.glob(row['archive_glob']))]
         valid = [p for p in matches if p.is_file() and sha256(p) == row['sha256']]
-        if len(valid) != 1:
-            raise ValueError(f"Expected exactly one matching checkpoint for {row['path']}, got {len(valid)}")
+        if not valid:
+            raise ValueError(f"No checksum-matching checkpoint found for {row['path']}")
+        source = valid[0].resolve()
         target = root / 'weights' / row['path']
         target.parent.mkdir(parents=True, exist_ok=True)
-        if target.exists() or target.is_symlink():
-            if target.resolve() != valid[0].resolve():
+        if target.resolve() != source:
+            if target.is_symlink():
+                target.unlink()
+            elif target.exists():
                 raise FileExistsError(f'Conflicting checkpoint: {target}')
-        else:
-            target.symlink_to(valid[0].resolve())
+            target.symlink_to(source)
         if args.verify and sha256(target) != row['sha256']:
             raise ValueError(f'Hash mismatch: {target}')
         print(f"[ok] {row['path']}")
