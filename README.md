@@ -8,12 +8,11 @@ The release contains the selected EEG backbone, attentive EEG–video classifier
 
 Obtain the [official NeuroMM data](https://2026.neuromm.org/challenge.html). The candidate directory must contain `candidate_ids.txt`, `eeg/<sample_id>.npy`, and seven video feature folders under `video/`.
 
-Download the [Track 3-only checkpoint archive](https://pan.baidu.com/s/17-usqSDAMNwiSpFXdS0kNg?pwd=99rk) (extraction code: `99rk`). It contains only five fold checkpoints, one EEG backbone checkpoint, and [weights/MANIFEST.tsv](weights/MANIFEST.tsv). Extract it, then link and verify the weights:
+Download the [Track 3 checkpoints on Hugging Face](https://huggingface.co/neuro1104/NeuroMM2026-IED-Detection). The model repository contains only five fold checkpoints, one EEG backbone checkpoint, and their checksum manifest. Download, link, and verify the weights:
 
 ```bash
-mkdir -p /path/to/extracted
-tar -xf NeuroMM2026_Track3_EEGBind_weights.tar -C /path/to/extracted
-python scripts/prepare_weights.py --source /path/to/extracted/weights --verify
+hf download neuro1104/NeuroMM2026-IED-Detection --local-dir /path/to/track3-weights
+python scripts/prepare_weights.py --source /path/to/track3-weights --verify
 ```
 
 The script checks each SHA-256 and makes local links named `fold_0.pt` through `fold_4.pt` and `eeg_anchor.pt`. Checkpoints and challenge data are excluded from Git.
