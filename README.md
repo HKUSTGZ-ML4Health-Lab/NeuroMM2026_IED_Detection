@@ -4,6 +4,8 @@ Inference code for our selected five-fold solution to **NeuroMM 2026 Track 3: NM
 
 The release contains the selected EEG backbone, attentive EEG–video classifier, candidate feature loader, five-fold log-probability ensemble, and a subject-disjoint fold generator. It is an inference reproduction package: the earlier initialization checkpoint and full training chain are not bundled. The six released checkpoints are sufficient to reproduce the selected inference pipeline.
 
+We will release the training code in November 2026.
+
 ## Data and weights
 
 Obtain the [official NeuroMM data](https://2026.neuromm.org/challenge.html). The candidate directory must contain `candidate_ids.txt`, `eeg/<sample_id>.npy`, and seven video feature folders under `video/`.
