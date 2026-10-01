@@ -1,0 +1,12 @@
+name: neuromm-source-ied
+channels:
+  - conda-forge
+dependencies:
+  - python=3.10
+  - pip
+  - numpy=1.26.4
+  - pip:
+      - torch==2.9.0
+      - torchvision==0.24.0
+      - timm==1.0.27
+      - tqdm>=4.66

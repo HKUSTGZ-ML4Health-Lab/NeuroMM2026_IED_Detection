@@ -1,0 +1,23 @@
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.venv/
+neuromm26_data/
+/weights/*
+!/weights/MANIFEST.tsv
+weights_runtime/
+outputs/
+neuromm26_results*/
+*.pt
+*.pth
+*.npy
+*.npz
+*.csv
+*.zip
+*.tar
+*.tar.gz
+
+# Local checkpoint links and generated outputs
+weights/folds/
+weights/eeg_anchor.pt
+outputs/

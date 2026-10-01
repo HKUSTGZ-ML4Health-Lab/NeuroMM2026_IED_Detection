@@ -1,0 +1,7 @@
+path	sha256	archive_glob	role
+folds/fold_0.pt	21d056b12bc05a7792e8e592a8cebd7c9df6c41510a937cd3e57beb22873542e	trained_checkpoints/*/fold0_best.pt	EEG-video fold 0
+folds/fold_1.pt	339298ef2aa545e2ae4337ce53a1071a21dc366d59c4727dbbe157568549c84d	trained_checkpoints/*/fold1_best.pt	EEG-video fold 1
+folds/fold_2.pt	5a25753a73681bbe4cd4e3d03571335b7295768228abdf4fe93ca92864af981e	trained_checkpoints/*/fold2_best.pt	EEG-video fold 2
+folds/fold_3.pt	b07a4846a51557eabfbfc984a5c206782708ca63cb4c0647b3fd70f1fe4cdab5	trained_checkpoints/*/fold3_best.pt	EEG-video fold 3
+folds/fold_4.pt	71706acdb7b02ad1e857523e2e23aee611e8721e31ddc608bd1df89435ccb9e7	trained_checkpoints/*/fold4_best.pt	EEG-video fold 4
+eeg_anchor.pt	5b0ce719de5c93fd85b3ea7d84707acb48f2014d6bbc2c0f8a532844097b3dc5	trained_checkpoints/*/best.pt	Frozen EEG backbone
